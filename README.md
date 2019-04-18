@@ -104,7 +104,12 @@ As this is a vagrantfile you will also need to have both Vagrant and Virtualbox 
  ## Build the two Vault clusters
 ```bash
 grahams-mbp:vault-cluster grazzer$
-
+mkdir vaultdemo
+cd vaultdemo
+git clone git@github.com:allthingsclowd/VaultClusterDemo.git .
+mkdir hsm
+cp <enterprise vault binary.zip> to hsm/
+# modify the files mentioned in the prerequsiites above ^^^^^
 vagrant up
 ```
 
