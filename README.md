@@ -1,13 +1,17 @@
 # Vault Performance Replication Cluster How-to
 
-## description
+This repo was originally forked from Alvaro's https://github.com/kikitux/nomad-in-a-box. I'd recommend you keep an eye on those repos as Alvaro shares some really tidy stuff (technical term).
 
-This projects uses LXD to create containers.
+## Description
+
+A vagrantfile to facilitate walking through the setup and configuration of HashiCorp Vault Enterprise Performance Replication on your laptop.
+
+This projects uses LXD to create containers inside of a virtualbox VM.
 
 Two virtual boxes are created, each one with the following configurations to represent a DC
 
 DC01
-```
+``` bash
 # lxc list
 +---------+---------+---------------------+------+------------+-----------+
 |  NAME   |  STATE  |        IPV4         | IPV6 |    TYPE    | SNAPSHOTS |
@@ -26,7 +30,6 @@ DC01
 +---------+---------+---------------------+------+------------+-----------+
 | vault3  | RUNNING | 10.170.13.23 (eth0) |      | PERSISTENT | 0         |
 +---------+---------+---------------------+------+------------+-----------+
-# 
 ```
 
 DC02
@@ -52,14 +55,16 @@ lxc list
 ```
 
 __Networking__
+
 The host nodes DC01 and DC02 have static routes applied to route the traffic between the two vault networks
+
 DC01
 `ip route add 172.16.13.0/24 via 192.168.2.17 src 192.168.2.10`
 
 DC02
 `ip route add 10.170.13.0/24 via 192.168.2.10 src 192.168.2.17`
 
-__ Vault Server.HCL __
+__Vault Server.HCL__
 
 ``` hcl
 storage "consul" {
@@ -86,23 +91,24 @@ cluster_addr = "http://EXTERNALIP:8201"
 ui = true
 ```
 
-_Note_: SSL disabled - this should be enabled in a production environment
+_Note: SSL disabled - this should be enabled in a production environment_
 
-# how to use
+# Instructions
 
 Prerequisites: This vagrantfile requires access to the Vault Enterprise Binary.
 Please amend https://github.com/allthingsclowd/VaultClusterDemo/blob/master/scripts/provision.sh#L38 
 and the same location in scripts/provision1.sh and put the required binary version details here.
 
-This repo was originally forked from Alvaro's https://github.com/kikitux/nomad-in-a-box. I'd recommend you keep an eye on those repos as Alvaro shares some really tidy stuff (technical term).
+As this is a vagrantfile you will also need to have both Vagrant and Virtualbox installed on your host system.
  
- ## local development on your laptop
+ ## Build the two Vault clusters
 ```bash
 grahams-mbp:vault-cluster grazzer$
-```
-`vagrant up`
 
-## Build DC01 Vault Cluster
+vagrant up
+```
+
+## Configure DC01 Vault Cluster
 
 `vagrant ssh dc01`
 
@@ -163,7 +169,7 @@ Active Node Address    <none>
 
 `exit`
 
-## Build DC02 Vault Cluster
+## Configure DC02 Vault Cluster
 
 ```bash
 vagrant@dc01:~$
