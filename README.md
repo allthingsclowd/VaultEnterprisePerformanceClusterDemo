@@ -3,7 +3,8 @@
 ## description
 
 This projects uses LXD to create containers.
-To virtual boxes are created each with the one of following configurations to represent a DC
+
+Two virtual boxes are created, each one with the following configurations to represent a DC
 
 DC01
 ```
@@ -51,7 +52,7 @@ lxc list
 ```
 
 __Networking__
-The host nodes DC01 and DC02 have static routes applied to route the traffic between to two vault networks
+The host nodes DC01 and DC02 have static routes applied to route the traffic between the two vault networks
 DC01
 `ip route add 172.16.13.0/24 via 192.168.2.17 src 192.168.2.10`
 
