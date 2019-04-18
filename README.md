@@ -1,4 +1,4 @@
-# Vault DC to DC Performance Cluster How-to
+# Vault Performance Replication Cluster How-to
 
 ## description
 
@@ -90,7 +90,13 @@ _Note_: SSL disabled - this should be enabled in a production environment
 
 # how to use
 
-## local development on your laptop
+Prerequisites: This vagrantfile requires access to the Vault Enterprise Binary.
+Please amend https://github.com/allthingsclowd/VaultClusterDemo/blob/master/scripts/provision.sh#L38 
+and the same location in scripts/provision1.sh and put the required binary version details here.
+
+This repo was originally forked from Alvaro's https://github.com/kikitux/nomad-in-a-box. I'd recommend you keep an eye on those repos as Alvaro shares some really tidy stuff (technical term).
+ 
+ ## local development on your laptop
 ```bash
 grahams-mbp:vault-cluster grazzer$
 ```
