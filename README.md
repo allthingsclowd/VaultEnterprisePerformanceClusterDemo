@@ -96,7 +96,7 @@ _Note: SSL disabled - this should be enabled in a production environment_
 # Instructions
 
 Prerequisites: This vagrantfile requires access to the Vault Enterprise Binary.
-Please amend https://github.com/allthingsclowd/VaultClusterDemo/blob/master/scripts/provision.sh#L38 
+Please amend https://github.com/allthingsclowd/VaultEnterprisePerformanceClusterDemo/blob/master/scripts/provision.sh#L38 
 and the same location in scripts/provision1.sh and put the required binary version details here.
 
 As this is a vagrantfile you will also need to have both Vagrant and Virtualbox installed on your host system.
@@ -106,7 +106,7 @@ As this is a vagrantfile you will also need to have both Vagrant and Virtualbox 
 grahams-mbp:vault-cluster grazzer$
 mkdir vaultdemo
 cd vaultdemo
-git clone git@github.com:allthingsclowd/VaultClusterDemo.git .
+git clone git@github.com:allthingsclowd/VaultEnterprisePerformanceClusterDemo.git .
 mkdir hsm
 cp <enterprise vault binary.zip> to hsm/
 # modify the files mentioned in the prerequsiites above ^^^^^
